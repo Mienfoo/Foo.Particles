@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Gorgon.Core" Version="3.2.26.144" />
+    <PackageReference Include="Gorgon.Renderers.Gorgon2D" Version="3.2.26.144" />
+    <PackageReference Include="SharpDX" Version="4.2.0" />
+  </ItemGroup>
+
+</Project>
