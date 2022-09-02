@@ -18,8 +18,8 @@ namespace Foo.Particles
         private static GorgonSwapChain? _screen;
         private static Gorgon2D? _renderer;
 
-        public static int WIDTH = 1280; 
-        public static int HEIGHT = 800;
+        public static int WIDTH = 1920; 
+        public static int HEIGHT = 1080;
 
         public static void Initialize(Form form)
         {
@@ -48,7 +48,7 @@ namespace Foo.Particles
             }
 
             _renderer.End();
-            _screen.Present(1);
+            _screen.Present(3);
             return true;
         }
 
