@@ -27,21 +27,21 @@ namespace Foo.Particles.Simulator
 
         public static void Initialize()
         {
-            Create(300, "Red", DX.Color.DarkRed);
-            Create(300, "Blue", DX.Color.DarkBlue);
+            Create(200, "Red", DX.Color.DarkRed);
+            Create(400, "Blue", DX.Color.DarkBlue);
+            Create(800, "Orange", DX.Color.DarkOrange);
         }
 
         public static void Update()
         {
-            PhysicsRules.BasicRepulsion(ParticleTypes["Blue"], ParticleTypes["Red"]);
-            PhysicsRules.BasicAttraction(ParticleTypes["Blue"], ParticleTypes["Blue"]);
-            PhysicsRules.BasicAttraction(ParticleTypes["Red"], ParticleTypes["Red"]);
-            
+            PhysicsRules.BasicAttraction(ParticleTypes["Red"], ParticleTypes["Red"], 0.6f);
+            PhysicsRules.BasicRepulsion(ParticleTypes["Red"], ParticleTypes["Blue"], 0.005f);
 
-            foreach (var particle in Particles)
-            {
-                particle.UpdatePos();
-            }
+            PhysicsRules.BasicRepulsion(ParticleTypes["Blue"], ParticleTypes["Blue"], 0.3f);
+            PhysicsRules.BasicAttraction(ParticleTypes["Blue"], ParticleTypes["Orange"], 0.005f);
+
+            PhysicsRules.BasicRepulsion(ParticleTypes["Orange"], ParticleTypes["Orange"], 0.2f);
+            PhysicsRules.BasicAttraction(ParticleTypes["Orange"], ParticleTypes["Red"], 0.005f);
         }
     }
 }

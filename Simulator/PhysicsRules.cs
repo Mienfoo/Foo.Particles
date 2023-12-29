@@ -8,10 +8,10 @@ namespace Foo.Particles.Simulator
 {
     static class PhysicsRules
     {
-        public static void BasicAttraction(List<Particle> p1, List<Particle> p2, int g = -1)
+        public static void BasicAttraction(List<Particle> p1, List<Particle> p2, float g)
         {
-            float MinRange = 2.5f;
-            float MaxRange = 150f;
+            float MinRange = 2f;
+            float MaxRange = 250f;
 
             for (int i = 0; i < p1.Count; i++)
             {
@@ -31,13 +31,13 @@ namespace Foo.Particles.Simulator
 
                     if (d > MinRange && d < MaxRange)
                     {
-                        float F = g * 1f / d;
+                        float F = -g * 1f / d;
                         fx += (F * dx);
                         fy += (F * dy);
                     }
                 }
-                a.vx = (a.vx + fx)*0.20f;
-                a.vy = (a.vy + fy)*0.20f;
+                a.vx = (a.vx + fx)*0.30f;
+                a.vy = (a.vy + fy)*0.30f;
                 a.X -= a.vx;
                 a.Y -= a.vy;
 
@@ -46,9 +46,9 @@ namespace Foo.Particles.Simulator
             }
         }
         
-        public static void BasicRepulsion(List<Particle> p1, List<Particle> p2, int g = -1)
+        public static void BasicRepulsion(List<Particle> p1, List<Particle> p2, float g)
         {
-            BasicAttraction(p1, p2, 1);
+            BasicAttraction(p1, p2, -g);
         }
     }
 }

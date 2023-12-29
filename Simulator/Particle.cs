@@ -19,10 +19,6 @@ namespace Foo.Particles.Simulator
 {
     internal class Particle
     {
-        public GorgonTriangleVertex p1;
-        public GorgonTriangleVertex p2;
-        public GorgonTriangleVertex p3;
-
         public DX.Color _color;
               
         public float _x;
@@ -30,39 +26,35 @@ namespace Foo.Particles.Simulator
         public float vy = 0f;
         public float vx = 0f;
 
-        //internal float X
-        //{
-        //    get { return _x; }
-        //    set
-        //    {
-        //        if (value >= Graphics.WIDTH || value < 0) { return; }
-        //        _x = value;
-        //    }
-        //}
-        //internal float Y
-        //{
-        //    get { return _y; }
-        //    set
-        //    {
-        //        if (value >= Graphics.HEIGHT || value < 0) { return; }
-        //        _y = value;
-        //    }
-        //}
-        internal float X { get { return _x; } set { _x = value; } }
-        internal float Y { get { return _y; } set { _y = value; } }
+        public float Radius { get; private set; }
 
-        public Particle(int x, int y, DX.Color color)
+        internal float X
+        {
+            get { return _x; }
+            set
+            {
+                if (value >= Graphics.WIDTH || value < 0) { return; }
+                _x = value;
+            }
+        }
+        internal float Y
+        {
+            get { return _y; }
+            set
+            {
+                if (value >= Graphics.HEIGHT || value < 0) { return; }
+                _y = value;
+            }
+        }
+        //internal float X { get { return _x; } set { _x = value; } }
+        //internal float Y { get { return _y; } set { _y = value; } }
+
+        public Particle(int x, int y, DX.Color color, float radius = 4f)
         {
             X = x;
             Y = y;
             _color = color;
-        }
-
-        public void UpdatePos()
-        {
-            p1 = new GorgonTriangleVertex(new Vector2(_x, _y), _color);
-            p2 = new GorgonTriangleVertex(new Vector2(_x + 6, _y), _color);
-            p3 = new GorgonTriangleVertex(new Vector2(_x + 3, _y + 5), _color);
+            Radius = radius;
         }
     }
 }
